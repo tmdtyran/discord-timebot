@@ -3,15 +3,17 @@ import discord
 from discord.ext import tasks, commands
 from datetime import datetime
 import pytz
+import webserver
 
 TOKEN = os.environ['DISCORD_BOT_TOKEN']
 CHANNEL_ID = int(os.environ['DISCORD_CHANNEL_ID'])
 
 TIMEZONES = {
-    'New York': 'America/New_York',
-    'London': 'Europe/London',
-    'Tokyo': 'Asia/Tokyo',
-    'Sydney': 'Australia/Sydney',
+    'Angelsking': 'America/New_York',
+    'dummified & mrdrakskull': 'Africa/Nairobi',
+    'Random rock & R3al': 'Asia/Kolkata',
+    'trapizoid & muttaburrasaurus': 'Europe/London',
+    'Tyran': 'Europe/Paris',
 }
 
 intents = discord.Intents.default()
@@ -50,4 +52,5 @@ async def update_time():
             msg = await channel.send(content)
             message_id = msg.id
 
+webserver.keep_alive()
 bot.run(TOKEN)
