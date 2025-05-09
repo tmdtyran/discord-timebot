@@ -22,9 +22,9 @@ bot = commands.Bot(command_prefix="!", intents=intents)
 message_id = None
 
 def get_time_message():
-    lines = ["🕒 **Current Time in Selected Locations:**"]
+    lines = ["**Current Time for members in the team:**"]
     for city, tz in TIMEZONES.items():
-        now = datetime.now(pytz.timezone(tz)).strftime('%H:%M:%S')
+        now = datetime.now(pytz.timezone(tz)).strftime('%H:%M:h')
         lines.append(f"**{city}**: {now}")
     return "\n".join(lines)
 
