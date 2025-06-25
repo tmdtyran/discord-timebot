@@ -4,6 +4,7 @@ from discord.ext import tasks, commands
 from datetime import datetime
 import pytz
 import webserver
+import requests
 
 TOKEN = os.environ['DISCORD_BOT_TOKEN']
 CHANNEL_ID = int(os.environ['DISCORD_CHANNEL_ID'])
@@ -51,6 +52,16 @@ async def update_time():
         except discord.NotFound:
             msg = await channel.send(content)
             message_id = msg.id
+
+
+@tasks.loop(minutes=5)
+async def ping_self():
+    try:
+        response = requests.get("https://discord-timebot.onrender.com")
+        print(f"Pinged self: {response.status_code}")
+    except Exception as e:
+        print(f"Failed to ping self: {e}")
+
 
 webserver.keep_alive()
 bot.run(TOKEN)
