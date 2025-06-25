@@ -33,6 +33,7 @@ def get_time_message():
 async def on_ready():
     print(f'Logged in as {bot.user}')
     update_time.start()
+    ping_self.start()
 
 @tasks.loop(minutes=1)
 async def update_time():
@@ -65,4 +66,3 @@ async def ping_self():
 
 webserver.keep_alive()
 bot.run(TOKEN)
-ping_self.start()
