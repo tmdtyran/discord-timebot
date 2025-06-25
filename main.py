@@ -64,4 +64,5 @@ async def ping_self():
 
 
 webserver.keep_alive()
+ping_self.start()
 bot.run(TOKEN)
