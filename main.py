@@ -54,7 +54,7 @@ async def update_time():
             message_id = msg.id
 
 
-@tasks.loop(minutes=5)
+@tasks.loop(minutes=1)
 async def ping_self():
     try:
         response = requests.get("https://discord-timebot.onrender.com")
